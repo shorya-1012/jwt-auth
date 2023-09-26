@@ -11,13 +11,13 @@ func Setup(app *fiber.App) {
 		return c.SendString("Welcome to jwt auth")
 	})
 
-	app.Post("/register", controllers.RegisterController)
+	app.Post("/api/register", controllers.RegisterController)
 
-	app.Post("/login", controllers.LoginController)
+	app.Post("/api/login", controllers.LoginController)
 
-	app.Get("/token", controllers.RefreshTokenController)
+	app.Get("/api/token", controllers.RefreshTokenController)
 
-	app.Delete("/logout", controllers.LogoutController)
+	app.Delete("/api/logout", controllers.LogoutController)
 
-	app.Get("/user", controllers.FetchUserController)
+	app.Get("/api/user", controllers.FetchUserController)
 }

@@ -7,15 +7,16 @@ import (
 	"github.com/shorya-1012/jwt-auth/routes"
 )
 
-func main(){
-    controllers.ConnectToDB()
+func main() {
+	controllers.ConnectToDB()
+	app := fiber.New()
 
-    app := fiber.New()
+	app.Use(cors.New(cors.Config{
+		AllowCredentials: true,
+        AllowOrigins : "http://localhost:3000",
+	}))
 
-    app.Use(cors.New(cors.Config{
-        AllowCredentials: true,
-    }))
-    routes.Setup(app)
+	routes.Setup(app)
 
-    app.Listen(":8000")
+	app.Listen(":8000")
 }
